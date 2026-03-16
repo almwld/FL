@@ -21,17 +21,12 @@ jobs:
       
       - name: Create fresh Android project
         run: |
-          # إنشاء مشروع Flutter جديد في مجلد مؤقت
           mkdir -p /tmp/fresh_project
           cd /tmp/fresh_project
           flutter create --org com.flexyemen --project-name flex_temp .
-          
-          # العودة إلى المشروع الأصلي ونسخ ملفات android النظيفة
           cd $GITHUB_WORKSPACE
           rm -rf android
           cp -r /tmp/fresh_project/android .
-          
-          # تنظيف الملفات المؤقتة
           rm -rf /tmp/fresh_project
       
       - name: Get dependencies
