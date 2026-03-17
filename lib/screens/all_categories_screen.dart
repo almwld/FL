@@ -112,3 +112,8 @@ class AllCategoriesScreen extends StatelessWidget {
     {'name': 'الهدايا', 'screen': GiftsScreen, 'color': Colors.red},
     {'name': 'الرياضة واللياقة', 'screen': SportsFitnessScreen, 'color': Colors.green},
     {'name': 'القرطاسية', 'screen': StationeryScreen, 'color': Colors.purple},
+    {'name': 'المعدات الصناعية', 'screen': IndustrialEquipmentScreen, 'color': Colors.grey},
+    {'name': 'الأدوات الكهربائية', 'screen': ElectricalToolsScreen, 'color': Colors.yellow},
+    {'name': 'أدوات السباكة', 'screen': PlumbingToolsScreen, 'color': Colors.blue},
+    {'name': 'أدوات النجارة', 'screen': CarpentryToolsScreen, 'color': Colors.orange},
+    {'name': 'أدوات الحدادة', 'screen': BlacksmithToolsScreen, 'color': Colors.brown},
