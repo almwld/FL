@@ -19,7 +19,7 @@ class MainNavigation extends StatefulWidget {
 }
 
 class _MainNavigationState extends State<MainNavigation> with TickerProviderStateMixin {
-  int _currentIndex = 2; // الرئيسية هي default
+  int _currentIndex = 0; // الرئيسية هي default
   late AnimationController _pulseController;
   
   late List<Widget> _screens;
@@ -32,13 +32,14 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
       duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
     
+    // ترتيب الشاشات حسب الفهارس
     _screens = [
-      const ProfileScreen(),      // 0: حسابي
-      const ChatScreen(),         // 1: المحادثات
-      const HomeScreen(),         // 2: الرئيسية
-      const WalletScreen(),       // 3: المحفظة
-      const AllAdsScreen(),       // 4: المتجر
-      const MapScreen(),          // 5: الخريطة
+      const HomeScreen(),         // 0: الرئيسية
+      const AllAdsScreen(),       // 1: المتجر
+      const MapScreen(),          // 2: الخريطة
+      const ChatScreen(),         // 3: الدردشة
+      const WalletScreen(),       // 4: المحفظة
+      ProfileScreen(isGuest: widget.isGuest), // 5: حسابي
     ];
   }
 
@@ -77,18 +78,18 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // الأزرار اليسرى (3)
-            _buildNavItem(0, 'profile.svg', 'حسابي'),
-            _buildNavItem(1, 'chat.svg', 'المحادثات'),
-            _buildNavItem(3, 'wallet.svg', 'المحفظة'),
+            // الأزرار اليسرى (الرئيسية، المتجر، الخريطة)
+            _buildNavItem(0, 'home.svg', 'الرئيسية'),
+            _buildNavItem(1, 'search.svg', 'المتجر'),
+            _buildNavItem(2, 'location.svg', 'الخريطة'),
             
-            // الزر الذهبي المركزي (الإضافة)
+            // الزر الذهبي المركزي (إضافة إعلان)
             _buildCenterButton(),
             
-            // الأزرار اليمنى (3)
-            _buildNavItem(4, 'search.svg', 'المتجر'),
-            _buildNavItem(2, 'home.svg', 'الرئيسية'),
-            _buildNavItem(5, 'location.svg', 'الخريطة'),
+            // الأزرار اليمنى (دردشة، محفظة، حسابي)
+            _buildNavItem(3, 'chat.svg', 'دردشة'),
+            _buildNavItem(4, 'wallet.svg', 'محفظة'),
+            _buildNavItem(5, 'profile.svg', 'حسابي'),
           ],
         ),
       ),
@@ -148,7 +149,6 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
   Widget _buildCenterButton() {
     return GestureDetector(
       onTap: () {
-        // فتح شاشة إضافة إعلان
         Navigator.of(context).push(
           MaterialPageRoute(builder: (_) => const AddAdScreen()),
         );
