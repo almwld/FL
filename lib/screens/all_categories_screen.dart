@@ -122,3 +122,8 @@ class AllCategoriesScreen extends StatelessWidget {
     {'name': 'خدمات المقاولات', 'screen': ContractingServicesScreen, 'color': Colors.green},
     {'name': 'خدمات النقل والتوصيل', 'screen': DeliveryServicesScreen, 'color': Colors.orange},
     {'name': 'خدمات التعليم والتدريب', 'screen': TrainingServicesScreen, 'color': Colors.purple},
+    {'name': 'المعدات الطبية', 'screen': MedicalEquipmentScreen, 'color': Colors.red},
+    {'name': 'مستحضرات التجميل', 'screen': CosmeticsScreen, 'color': Colors.pink},
+    {'name': 'العناية بالشعر', 'screen': HairCareScreen, 'color': Colors.blue},
+    {'name': 'العناية بالبشرة', 'screen': SkinCareScreen, 'color': Colors.green},
+    {'name': 'العطور', 'screen': PerfumesScreen, 'color': Colors.amber},
