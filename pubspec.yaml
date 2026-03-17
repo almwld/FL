@@ -25,6 +25,10 @@ dependencies:
   path_provider: ^2.1.5
   shimmer: ^3.0.0
   smooth_page_indicator: ^1.1.0
+  file_picker: ^8.0.0+1
+  record: ^5.1.2
+  audioplayers: ^6.0.0
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:
@@ -65,11 +69,3 @@ flutter:
     - assets/icons/
     - assets/icons/svg/
     - assets/animations/
-  file_picker: ^8.0.0+1
-  record: ^5.1.2
-  audioplayers: ^6.0.0
-  permission_handler: ^11.3.1
-  file_picker: ^8.0.0+1
-  record: ^5.1.2
-  audioplayers: ^6.0.0
-  permission_handler: ^11.3.1
