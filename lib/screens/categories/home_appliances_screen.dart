@@ -9,7 +9,7 @@ class HomeAppliancesScreen extends StatelessWidget {
     {'name': 'ثلاجات', 'icon': Icons.kitchen, 'color': Colors.cyan, 'count': '456'},
     {'name': 'غسالات', 'icon': Icons.local_laundry_service, 'color': Colors.blue, 'count': '389'},
     {'name': 'مكيفات', 'icon': Icons.ac_unit, 'color': Colors.lightBlue, 'count': '678'},
-    {'name': 'أفران', 'icon': Icons.oven, 'color': Colors.orange, 'count': '234'},
+    {'name': 'أفران', 'icon': Icons.kitchen, 'color': Colors.orange, 'count': '234'},
     {'name': 'مكانس', 'icon': Icons.cleaning_services, 'color': Colors.purple, 'count': '167'},
     {'name': 'مراوح', 'icon': Icons.toys, 'color': Colors.green, 'count': '145'},
     {'name': 'سخانات', 'icon': Icons.water, 'color': Colors.red, 'count': '123'},

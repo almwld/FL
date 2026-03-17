@@ -11,7 +11,7 @@ class ContractingServicesScreen extends StatelessWidget {
     {'name': 'هدم وإزالة', 'icon': Icons.do_not_disturb, 'color': Colors.red, 'count': '45'},
     {'name': 'حفريات', 'icon': Icons.agriculture, 'color': Colors.brown, 'count': '67'},
     {'name': 'تسليك مجاري', 'icon': Icons.plumbing, 'color': Colors.grey, 'count': '34'},
-    {'name': 'عزل مائي', 'icon': Icons.waterproof, 'color': Colors.blue, 'count': '56'},
+    {'name': 'عزل مائي', 'icon': Icons.water, 'color': Colors.blue, 'count': '56'},
     {'name': 'واجهات زجاج', 'icon': Icons.window, 'color': Colors.cyan, 'count': '23'},
     {'name': 'دهانات', 'icon': Icons.brush, 'color': Colors.purple, 'count': '78'},
   ];

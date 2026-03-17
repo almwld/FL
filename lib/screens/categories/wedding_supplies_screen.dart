@@ -6,10 +6,10 @@ class WeddingSuppliesScreen extends StatelessWidget {
   const WeddingSuppliesScreen({super.key});
 
   final List<Map<String, dynamic>> _categories = const [
-    {'name': 'فساتين أعراس', 'icon': Icons.wedding, 'color': Colors.white, 'count': '234'},
+    {'name': 'فساتين أعراس', 'icon': Icons.favorite, 'color': Colors.white, 'count': '234'},
     {'name': 'بدل عريس', 'icon': Icons.man, 'color': Colors.black, 'count': '156'},
     {'name': 'ذهب ومجوهرات', 'icon': Icons.diamond, 'color': Colors.amber, 'count': '89'},
-    {'name': 'ديكور أعراس', 'icon': Icons.decor, 'color': Colors.pink, 'count': '123'},
+    {'name': 'ديكور أعراس', 'icon': Icons.decorations, 'color': Colors.pink, 'count': '123'},
     {'name': 'ورود', 'icon': Icons.local_florist, 'color': Colors.red, 'count': '98'},
     {'name': 'كوشة', 'icon': Icons.chair, 'color': Colors.purple, 'count': '67'},
     {'name': 'سيارات فاخرة', 'icon': Icons.directions_car, 'color': Colors.amber, 'count': '45'},

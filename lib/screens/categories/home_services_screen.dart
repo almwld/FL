@@ -13,7 +13,7 @@ class HomeServicesScreen extends StatelessWidget {
     {'name': 'نجارة', 'icon': Icons.handyman, 'color': Colors.orange, 'count': '98'},
     {'name': 'دهان', 'icon': Icons.brush, 'color': Colors.purple, 'count': '87'},
     {'name': 'تبليط', 'icon': Icons.grid_on, 'color': Colors.brown, 'count': '76'},
-    {'name': 'عزل', 'icon': Icons.waterproof, 'color': Colors.grey, 'count': '45'},
+    {'name': 'عزل', 'icon': Icons.water, 'color': Colors.grey, 'count': '45'},
   ];
 
   @override

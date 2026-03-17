@@ -10,7 +10,7 @@ class DessertsScreen extends StatelessWidget {
     {'name': 'كيك', 'icon': Icons.cake, 'color': Colors.pink, 'count': '234'},
     {'name': 'جاتوه', 'icon': Icons.cake, 'color': Colors.purple, 'count': '156'},
     {'name': 'آيس كريم', 'icon': Icons.icecream, 'color': Colors.blue, 'count': '123'},
-    {'name': 'مهلبية', 'icon': Icons.cream, 'color': Colors.white, 'count': '98'},
+    {'name': 'مهلبية', 'icon': Icons.face, 'color': Colors.white, 'count': '98'},
     {'name': 'أم علي', 'icon': Icons.breakfast_dining, 'color': Colors.amber, 'count': '87'},
   ];
 

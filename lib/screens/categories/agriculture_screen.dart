@@ -10,7 +10,7 @@ class AgricultureScreen extends StatelessWidget {
     {'name': 'شتلات', 'icon': Icons.eco, 'color': Colors.lightGreen, 'count': '189'},
     {'name': 'أسمدة', 'icon': Icons.agriculture, 'color': Colors.brown, 'count': '145'},
     {'name': 'مبيدات', 'icon': Icons.science, 'color': Colors.red, 'count': '98'},
-    {'name': 'أدوات زراعية', 'icon': Icons.gardening, 'color': Colors.orange, 'count': '167'},
+    {'name': 'أدوات زراعية', 'icon': Icons.agriculture, 'color': Colors.orange, 'count': '167'},
   ];
 
   @override

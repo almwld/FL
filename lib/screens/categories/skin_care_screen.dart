@@ -6,7 +6,7 @@ class SkinCareScreen extends StatelessWidget {
   const SkinCareScreen({super.key});
 
   final List<Map<String, dynamic>> _categories = const [
-    {'name': 'كريمات ترطيب', 'icon': Icons.cream, 'color': Colors.pink, 'count': '234'},
+    {'name': 'كريمات ترطيب', 'icon': Icons.face, 'color': Colors.pink, 'count': '234'},
     {'name': 'تونر', 'icon': Icons.water_drop, 'color': Colors.blue, 'count': '156'},
     {'name': 'مقشر', 'icon': Icons.cleaning_services, 'color': Colors.orange, 'count': '123'},
     {'name': 'واقي شمس', 'icon': Icons.wb_sunny, 'color': Colors.yellow, 'count': '98'},

@@ -9,9 +9,9 @@ class IndustrialEquipmentScreen extends StatelessWidget {
     {'name': 'مكائن صناعية', 'icon': Icons.precision_manufacturing, 'color': Colors.grey, 'count': '156'},
     {'name': 'مولدات كهرباء', 'icon': Icons.electrical_services, 'color': Colors.yellow, 'count': '89'},
     {'name': 'ضواغط هواء', 'icon': Icons.compress, 'color': Colors.blue, 'count': '67'},
-    {'name': 'مضخات', 'icon': Icons.water_pump, 'color': Colors.cyan, 'count': '45'},
+    {'name': 'مضخات', 'icon': Icons.water_drop, 'color': Colors.cyan, 'count': '45'},
     {'name': 'سيور ناقلة', 'icon': Icons.conveyor_belt, 'color': Colors.orange, 'count': '34'},
-    {'name': 'أفران صناعية', 'icon': Icons.oven, 'color': Colors.red, 'count': '23'},
+    {'name': 'أفران صناعية', 'icon': Icons.kitchen, 'color': Colors.red, 'count': '23'},
   ];
 
   @override

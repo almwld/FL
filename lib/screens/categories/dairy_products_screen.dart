@@ -10,7 +10,7 @@ class DairyProductsScreen extends StatelessWidget {
     {'name': 'زبادي', 'icon': Icons.breakfast_dining, 'color': Colors.white, 'count': '156'},
     {'name': 'جبن', 'icon': Icons.cake, 'color': Colors.yellow, 'count': '123'},
     {'name': 'زبدة', 'icon': Icons.cake, 'color': Colors.yellow, 'count': '98'},
-    {'name': 'قشطة', 'icon': Icons.cream, 'color': Colors.white, 'count': '87'},
+    {'name': 'قشطة', 'icon': Icons.face, 'color': Colors.white, 'count': '87'},
     {'name': 'روب', 'icon': Icons.breakfast_dining, 'color': Colors.white, 'count': '76'},
   ];
 

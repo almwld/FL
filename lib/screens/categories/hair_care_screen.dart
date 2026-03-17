@@ -9,7 +9,7 @@ class HairCareScreen extends StatelessWidget {
     {'name': 'شامبو', 'icon': Icons.shower, 'color': Colors.blue, 'count': '234'},
     {'name': 'بلسم', 'icon': Icons.spa, 'color': Colors.green, 'count': '156'},
     {'name': 'زيت شعر', 'icon': Icons.opacity, 'color': Colors.amber, 'count': '123'},
-    {'name': 'كريم شعر', 'icon': Icons.cream, 'color': Colors.pink, 'count': '98'},
+    {'name': 'كريم شعر', 'icon': Icons.face, 'color': Colors.pink, 'count': '98'},
     {'name': 'صبغات', 'icon': Icons.color_lens, 'color': Colors.purple, 'count': '87'},
     {'name': 'أدوات تصفيف', 'icon': Icons.content_cut, 'color': Colors.grey, 'count': '76'},
   ];

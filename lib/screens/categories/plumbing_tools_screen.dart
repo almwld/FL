@@ -6,12 +6,12 @@ class PlumbingToolsScreen extends StatelessWidget {
   const PlumbingToolsScreen({super.key});
 
   final List<Map<String, dynamic>> _categories = const [
-    {'name': 'مواسير', 'icon': Icons.pipe, 'color': Colors.grey, 'count': '234'},
+    {'name': 'مواسير', 'icon': Icons.plumbing, 'color': Colors.grey, 'count': '234'},
     {'name': 'خلاطات مياه', 'icon': Icons.water_drop, 'color': Colors.blue, 'count': '156'},
     {'name': 'صرف صحي', 'icon': Icons.plumbing, 'color': Colors.brown, 'count': '89'},
     {'name': 'أدوات تركيب', 'icon': Icons.handyman, 'color': Colors.orange, 'count': '67'},
-    {'name': 'سخانات مياه', 'icon': Icons.water_heater, 'color': Colors.red, 'count': '45'},
-    {'name': 'مضخات مياه', 'icon': Icons.water_pump, 'color': Colors.cyan, 'count': '34'},
+    {'name': 'سخانات مياه', 'icon': Icons.whatshot, 'color': Colors.red, 'count': '45'},
+    {'name': 'مضخات مياه', 'icon': Icons.water_drop, 'color': Colors.cyan, 'count': '34'},
   ];
 
   @override

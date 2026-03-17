@@ -7,7 +7,7 @@ class HeavyEquipmentScreen extends StatelessWidget {
 
   final List<Map<String, dynamic>> _categories = const [
     {'name': 'حفارات', 'icon': Icons.construction, 'color': Colors.yellow, 'count': '34'},
-    {'name': 'رافعات', 'icon': Icons.crane, 'color': Colors.orange, 'count': '23'},
+    {'name': 'رافعات', 'icon': Icons.construction, 'color': Colors.orange, 'count': '23'},
     {'name': 'بلدوزرات', 'icon': Icons.do_not_disturb, 'color': Colors.red, 'count': '12'},
     {'name': 'شيولات', 'icon': Icons.local_shipping, 'color': Colors.blue, 'count': '18'},
   ];

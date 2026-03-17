@@ -8,7 +8,7 @@ class LuxuryItemsScreen extends StatelessWidget {
   final List<Map<String, dynamic>> _categories = const [
     {'name': 'هدايا', 'icon': Icons.card_giftcard, 'color': Colors.red, 'count': '345'},
     {'name': 'ساعات فاخرة', 'icon': Icons.watch, 'color': Colors.amber, 'count': '123'},
-    {'name': 'نظارات', 'icon': Icons.glasses, 'color': Colors.blue, 'count': '89'},
+    {'name': 'نظارات', 'icon': Icons.visibility, 'color': Colors.blue, 'count': '89'},
     {'name': 'مجوهرات', 'icon': Icons.diamond, 'color': Colors.purple, 'count': '67'},
   ];
 
