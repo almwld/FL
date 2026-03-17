@@ -13,6 +13,12 @@ import 'categories/auctions_category_screen.dart';
 import 'categories/donations_screen.dart';
 import 'categories/luxury_items_screen.dart';
 import 'categories/heavy_equipment_screen.dart';
+import 'categories/software_screen.dart';
+import 'categories/security_safety_screen.dart';
+import 'categories/aviation_screen.dart';
+import 'categories/music_screen.dart';
+import 'categories/currency_screen.dart';
+import 'categories/cinema_screen.dart';
 
 class AllCategoriesScreen extends StatelessWidget {
   const AllCategoriesScreen({super.key});
@@ -30,6 +36,12 @@ class AllCategoriesScreen extends StatelessWidget {
     {'name': 'التبرعات', 'screen': DonationsScreen, 'color': Colors.teal},
     {'name': 'الكماليات', 'screen': LuxuryItemsScreen, 'color': Colors.purple},
     {'name': 'المعدات الثقيلة', 'screen': HeavyEquipmentScreen, 'color': Colors.yellow},
+    {'name': 'البرمجيات', 'screen': SoftwareScreen, 'color': Colors.indigo},
+    {'name': 'الأمن والسلامة', 'screen': SecuritySafetyScreen, 'color': Colors.grey},
+    {'name': 'الطيران', 'screen': AviationScreen, 'color': Colors.lightBlue},
+    {'name': 'الموسيقى', 'screen': MusicScreen, 'color': Colors.purple},
+    {'name': 'العملات والطوابع', 'screen': CurrencyScreen, 'color': Colors.amber},
+    {'name': 'السينما', 'screen': CinemaScreen, 'color': Colors.red},
   ];
 
   @override
