@@ -33,7 +33,6 @@ class AdCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // صورة المنتج
             Expanded(
               flex: 3,
               child: ClipRRect(
@@ -93,7 +92,6 @@ class AdCard extends StatelessWidget {
                 ),
               ),
             ),
-            // معلومات المنتج
             Expanded(
               flex: 2,
               child: Padding(
@@ -113,7 +111,6 @@ class AdCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                     const Spacer(),
-                    // السعر
                     Row(
                       children: [
                         if (ad.oldPrice != null) ...[
@@ -142,7 +139,6 @@ class AdCard extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 4),
-                    // الموقع
                     Row(
                       children: [
                         Icon(
@@ -164,7 +160,6 @@ class AdCard extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        // المفضلة
                         Icon(
                           Icons.favorite_border,
                           size: 14,
@@ -229,7 +224,6 @@ class AuctionCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // الصورة مع المؤقت
             Expanded(
               flex: 3,
               child: Stack(
@@ -291,7 +285,6 @@ class AuctionCard extends StatelessWidget {
                 ],
               ),
             ),
-            // التفاصيل
             Expanded(
               flex: 2,
               child: Padding(
@@ -347,7 +340,7 @@ class AuctionCard extends StatelessWidget {
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(
-                            '${ad.bidCount} عروض',
+                            '${ad.bidCount ?? 0} عروض',
                             style: const TextStyle(
                               fontFamily: 'Changa',
                               fontSize: 8,
