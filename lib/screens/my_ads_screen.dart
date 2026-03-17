@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../widgets/custom_app_bar.dart';
 import 'ad_detail_screen.dart';
+import '../models/ad_model.dart';
 
 class MyAdsScreen extends StatefulWidget {
   const MyAdsScreen({super.key});
@@ -72,63 +73,60 @@ class _MyAdsScreenState extends State<MyAdsScreen> {
               itemCount: _filteredAds.length,
               itemBuilder: (context, index) {
                 final ad = _filteredAds[index];
-                return GestureDetector(
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdDetailScreen(ad: null))),
-                  child: Container(
-                    margin: const EdgeInsets.only(bottom: 12),
-                    decoration: BoxDecoration(
-                      color: isDark ? AppTheme.darkCard : AppTheme.lightCard,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-                          child: Container(
-                            height: 120,
-                            width: double.infinity,
-                            color: Colors.grey[300],
-                            child: const Icon(Icons.image, color: Colors.grey),
-                          ),
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 12),
+                  decoration: BoxDecoration(
+                    color: isDark ? AppTheme.darkCard : AppTheme.lightCard,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+                        child: Container(
+                          height: 120,
+                          width: double.infinity,
+                          color: Colors.grey[300],
+                          child: const Icon(Icons.image, color: Colors.grey),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Expanded(child: Text(ad['title'], style: const TextStyle(fontWeight: FontWeight.bold))),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      color: ad['status'] == 'نشط' ? Colors.green.withOpacity(0.2) : Colors.red.withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                    child: Text(
-                                      ad['status'],
-                                      style: TextStyle(
-                                        color: ad['status'] == 'نشط' ? Colors.green : Colors.red,
-                                        fontSize: 12,
-                                      ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(child: Text(ad['title'], style: const TextStyle(fontWeight: FontWeight.bold))),
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                  decoration: BoxDecoration(
+                                    color: ad['status'] == 'نشط' ? Colors.green.withOpacity(0.2) : Colors.red.withOpacity(0.2),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Text(
+                                    ad['status'],
+                                    style: TextStyle(
+                                      color: ad['status'] == 'نشط' ? Colors.green : Colors.red,
+                                      fontSize: 12,
                                     ),
                                   ),
-                                ],
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Text(ad['price'], style: const TextStyle(color: AppTheme.goldColor)),
-                                  const Spacer(),
-                                  const Icon(Icons.visibility, size: 16, color: Colors.grey),
-                                  const SizedBox(width: 4),
-                                  Text('${ad['views']}'),
-                                ],
-                              ),
-                            ],
-                          ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Row(
+                              children: [
+                                Text(ad['price'], style: const TextStyle(color: AppTheme.goldColor)),
+                                const Spacer(),
+                                const Icon(Icons.visibility, size: 16, color: Colors.grey),
+                                const SizedBox(width: 4),
+                                Text('${ad['views']}'),
+                              ],
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 );
               },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/app_theme.dart';
 import '../widgets/custom_app_bar.dart';
 import 'ad_detail_screen.dart';
+import '../models/ad_model.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -63,7 +64,7 @@ class _SearchScreenState extends State<SearchScreen> {
               title: Text('نتيجة بحث ${index + 1}'),
               subtitle: const Text('صنعاء • 25,000 ر.ي'),
               trailing: const Icon(Icons.favorite_border),
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdDetailScreen(ad: null))),
+              onTap: () {},
             )),
           ],
         ),
