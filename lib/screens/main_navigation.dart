@@ -38,7 +38,7 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
       const HomeScreen(),     // 2: الرئيسية
       const WalletScreen(),   // 3: المحفظة
       const MapScreen(),      // 4: الخريطة
-      const AllAdsScreen(),   // 5: المتجر
+      const AllCategoriesScreen(),   // 5: المتجر
     ];
   }
 
@@ -87,7 +87,7 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
             
             // الأزرار اليمنى (3)
             _buildNavItem(4, 'location.svg', 'الخريطة'),
-            _buildNavItem(5, 'search.svg', 'المتجر'),
+            _buildNavItem(5, 'apps.svg', 'المتجر'),
             _buildNavItem(2, 'home.svg', 'الرئيسية'),
           ],
         ),
