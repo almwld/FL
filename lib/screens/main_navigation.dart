@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/app_theme.dart';
 import 'home_screen.dart';
 import 'wallet_screen.dart';
@@ -48,30 +49,46 @@ class _MainNavigationState extends State<MainNavigation> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildNavItem(Icons.person_outline, 'حسابي', 4),
-            _buildNavItem(Icons.chat_bubble_outline, 'المحادثات', 3),
-            _buildNavItem(Icons.account_balance_wallet_outlined, 'المحفظة', 1),
+            _buildNavItem('profile.svg', 'حسابي', 4),
+            _buildNavItem('chat.svg', 'المحادثات', 3),
+            _buildNavItem('wallet.svg', 'المحفظة', 1),
             _buildCenterButton(),
-            _buildNavItem(Icons.home_outlined, 'الرئيسية', 0),
-            _buildNavItem(Icons.shopping_bag_outlined, 'المتجر', 0),
-            _buildNavItem(Icons.add_circle_outline, 'إضافة', 2),
+            _buildNavItem('home.svg', 'الرئيسية', 0),
+            _buildNavItem('search.svg', 'المتجر', 0),
+            _buildNavItem('add.svg', 'إضافة', 2),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildNavItem(IconData icon, String label, int index) {
+  Widget _buildNavItem(String iconName, String label, int index) {
     final isSelected = _currentIndex == index;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    
     return GestureDetector(
       onTap: () => setState(() => _currentIndex = index),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, color: isSelected ? AppTheme.goldColor : (isDark ? Colors.grey[400] : Colors.grey[600])),
+          SvgPicture.asset(
+            'assets/icons/svg/$iconName',
+            width: 24,
+            height: 24,
+            colorFilter: ColorFilter.mode(
+              isSelected ? AppTheme.goldColor : (isDark ? Colors.grey[400]! : Colors.grey[600]!),
+              BlendMode.srcIn,
+            ),
+          ),
           const SizedBox(height: 2),
-          Text(label, style: TextStyle(color: isSelected ? AppTheme.goldColor : (isDark ? Colors.grey[400] : Colors.grey[600]), fontSize: 11, fontFamily: 'Changa')),
+          Text(
+            label,
+            style: TextStyle(
+              color: isSelected ? AppTheme.goldColor : (isDark ? Colors.grey[400] : Colors.grey[600]),
+              fontSize: 11,
+              fontFamily: 'Changa',
+            ),
+          ),
         ],
       ),
     );
@@ -88,7 +105,13 @@ class _MainNavigationState extends State<MainNavigation> {
           shape: BoxShape.circle,
           boxShadow: [BoxShadow(color: AppTheme.goldColor.withOpacity(0.4), blurRadius: 10)],
         ),
-        child: const Icon(Icons.add, color: Colors.black, size: 30),
+        child: SvgPicture.asset(
+          'assets/icons/svg/add.svg',
+          colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+          width: 30,
+          height: 30,
+          fit: BoxFit.scaleDown,
+        ),
       ),
     );
   }
