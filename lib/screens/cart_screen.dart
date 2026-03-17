@@ -17,7 +17,11 @@ class _CartScreenState extends State<CartScreen> {
     {'id': 3, 'name': 'جراب حماية', 'price': 5000, 'quantity': 1, 'image': 'https://via.placeholder.com/60'},
   ];
 
-  int get _totalPrice => _cartItems.fold(0, (sum, item) => sum + (item['price'] * item['quantity']));
+  int get _totalPrice {
+    return _cartItems.fold<int>(0, (sum, item) {
+      return sum + (item['price'] * item['quantity']) as int;
+    });
+  }
 
   void _updateQuantity(int id, bool increase) {
     setState(() {
