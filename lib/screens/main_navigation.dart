@@ -8,7 +8,6 @@ import 'add_ad_screen.dart';
 import 'chat_screen.dart';
 import 'profile_screen.dart';
 import 'all_ads_screen.dart';
-import 'map_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   final bool isGuest;
@@ -33,12 +32,12 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
     )..repeat(reverse: true);
     
     _screens = [
-      const ProfileScreen(), // 0: حسابي
-      const ChatScreen(),     // 1: المحادثات
-      const HomeScreen(),     // 2: الرئيسية
-      const WalletScreen(),   // 3: المحفظة
-      const MapScreen(),      // 4: الخريطة
-      const AllCategoriesScreen(),   // 5: المتجر
+      const ProfileScreen(),      // 0: حسابي
+      const ChatScreen(),         // 1: المحادثات
+      const HomeScreen(),         // 2: الرئيسية
+      const WalletScreen(),       // 3: المحفظة
+      const AllAdsScreen(),       // 4: المتجر (بدون const)
+      const AddAdScreen(),        // 5: إضافة إعلان
     ];
   }
 
@@ -86,9 +85,9 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
             _buildCenterButton(),
             
             // الأزرار اليمنى (3)
-            _buildNavItem(4, 'location.svg', 'الخريطة'),
-            _buildNavItem(5, 'apps.svg', 'المتجر'),
+            _buildNavItem(4, 'search.svg', 'المتجر'),
             _buildNavItem(2, 'home.svg', 'الرئيسية'),
+            _buildNavItem(5, 'add.svg', 'إضافة'),
           ],
         ),
       ),
@@ -147,11 +146,7 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
 
   Widget _buildCenterButton() {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(builder: (_) => const AddAdScreen()),
-        );
-      },
+      onTap: () => _onItemTapped(5), // الذهاب إلى شاشة إضافة إعلان
       child: Container(
         width: 70,
         height: 70,
