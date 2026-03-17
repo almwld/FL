@@ -36,46 +36,32 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
         itemCount: _methods.length,
         itemBuilder: (context, index) {
           final method = _methods[index];
-          return Container(
+          return Card(
             margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: isDark ? AppTheme.darkCard : AppTheme.lightCard,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: BoxDecoration(
-                    color: (method['color'] as Color).withOpacity(0.2),
-                    shape: BoxShape.circle,
-                  ),
-                  child: Icon(method['icon'] as IconData, color: method['color']),
+            color: isDark ? AppTheme.darkCard : AppTheme.lightCard,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            child: ListTile(
+              leading: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: (method['color'] as Color).withOpacity(0.2),
+                  shape: BoxShape.circle,
                 ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(method['name'], style: const TextStyle(fontWeight: FontWeight.bold)),
-                      if (method.containsKey('balance'))
-                        Text('الرصيد: ${method['balance']}', style: TextStyle(fontSize: 12, color: Colors.grey[500])),
-                      if (method.containsKey('expiry'))
-                        Text('تنتهي: ${method['expiry']}', style: TextStyle(fontSize: 12, color: Colors.grey[500])),
-                      if (method.containsKey('account'))
-                        Text(method['account'], style: TextStyle(fontSize: 12, color: Colors.grey[500])),
-                    ],
-                  ),
-                ),
-                PopupMenuButton(
-                  icon: const Icon(Icons.more_vert),
-                  itemBuilder: (context) => [
-                    const PopupMenuItem(value: 'edit', child: Text('تعديل')),
-                    const PopupMenuItem(value: 'delete', child: Text('حذف', style: TextStyle(color: Colors.red))),
-                  ],
-                ),
-              ],
+                child: Icon(method['icon'] as IconData, color: method['color']),
+              ),
+              title: Text(method['name']),
+              subtitle: method.containsKey('balance')
+                  ? Text('الرصيد: ${method['balance']}')
+                  : method.containsKey('expiry')
+                      ? Text('تنتهي: ${method['expiry']}')
+                      : Text(method['account']),
+              trailing: PopupMenuButton(
+                icon: const Icon(Icons.more_vert),
+                itemBuilder: (_) => [
+                  const PopupMenuItem(value: 'edit', child: Text('تعديل')),
+                  const PopupMenuItem(value: 'delete', child: Text('حذف', style: TextStyle(color: Colors.red))),
+                ],
+              ),
             ),
           );
         },

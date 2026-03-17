@@ -28,38 +28,14 @@ class _LanguageScreenState extends State<LanguageScreen> {
         itemBuilder: (context, index) {
           final lang = _languages[index];
           final isSelected = _selectedLanguage == lang['name'];
-          return GestureDetector(
-            onTap: () {
-              setState(() => _selectedLanguage = lang['name']);
-            },
-            child: Container(
-              margin: const EdgeInsets.only(bottom: 8),
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: isDark ? AppTheme.darkCard : AppTheme.lightCard,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(
-                  color: isSelected ? AppTheme.goldColor : Colors.transparent,
-                  width: 2,
-                ),
-              ),
-              child: Row(
-                children: [
-                  Text(lang['flag'], style: const TextStyle(fontSize: 24)),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      lang['name'],
-                      style: const TextStyle(
-                        fontFamily: 'Changa',
-                        fontSize: 16,
-                      ),
-                    ),
-                  ),
-                  if (isSelected)
-                    const Icon(Icons.check, color: AppTheme.goldColor),
-                ],
-              ),
+          return Card(
+            color: isDark ? AppTheme.darkCard : AppTheme.lightCard,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            child: ListTile(
+              leading: Text(lang['flag'], style: const TextStyle(fontSize: 24)),
+              title: Text(lang['name']),
+              trailing: isSelected ? const Icon(Icons.check, color: AppTheme.goldColor) : null,
+              onTap: () => setState(() => _selectedLanguage = lang['name']),
             ),
           );
         },
