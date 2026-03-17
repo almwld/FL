@@ -100,3 +100,9 @@ class AllCategoriesScreen extends StatelessWidget {
     );
   }
 }
+    {'name': 'السيارات الفاخرة', 'screen': LuxuryCarsScreen, 'color': Colors.grey},
+    {'name': 'العقارات التجارية', 'screen': CommercialRealestateScreen, 'color': Colors.blue},
+    {'name': 'الإلكترونيات الاستهلاكية', 'screen': ConsumerElectronicsScreen, 'color': Colors.red},
+    {'name': 'الأثاث الفاخر', 'screen': LuxuryFurnitureScreen, 'color': Colors.brown},
+    {'name': 'المجوهرات والساعات', 'screen': JewelryWatchesScreen, 'color': Colors.amber},
+    {'name': 'العطور والمكياج', 'screen': PerfumesMakeupScreen, 'color': Colors.pink},
