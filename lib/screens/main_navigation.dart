@@ -8,7 +8,6 @@ import 'add_ad_screen.dart';
 import 'chat_screen.dart';
 import 'profile_screen.dart';
 import 'all_ads_screen.dart';
-import 'cart_screen.dart';
 import 'map_screen.dart';
 
 class MainNavigation extends StatefulWidget {
@@ -20,40 +19,37 @@ class MainNavigation extends StatefulWidget {
 }
 
 class _MainNavigationState extends State<MainNavigation> with TickerProviderStateMixin {
-  int _currentIndex = 0;
-  late AnimationController _animationController;
+  int _currentIndex = 2; // الرئيسية هي default
+  late AnimationController _pulseController;
   
   late List<Widget> _screens;
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
+    _pulseController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 300),
-    );
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
     
     _screens = [
-      const HomeScreen(),
-      const AllAdsScreen(),
-      const MapScreen(),
-      const WalletScreen(),
-      const CartScreen(),
-      const ChatScreen(),
-      ProfileScreen(isGuest: widget.isGuest),
+      const ProfileScreen(), // 0: حسابي
+      const ChatScreen(),     // 1: المحادثات
+      const HomeScreen(),     // 2: الرئيسية
+      const WalletScreen(),   // 3: المحفظة
+      const MapScreen(),      // 4: الخريطة
+      const AllAdsScreen(),   // 5: المتجر
     ];
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _pulseController.dispose();
     super.dispose();
   }
 
   void _onItemTapped(int index) {
     setState(() => _currentIndex = index);
-    _animationController.reset();
-    _animationController.forward();
   }
 
   @override
@@ -81,14 +77,18 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            _buildNavItem(0, 'home.svg', 'الرئيسية'),
-            _buildNavItem(1, 'search.svg', 'المتجر'),
-            _buildNavItem(2, 'location.svg', 'الخريطة'),
-            _buildCenterButton(),
+            // الأزرار اليسرى (3)
+            _buildNavItem(0, 'profile.svg', 'حسابي'),
+            _buildNavItem(1, 'chat.svg', 'المحادثات'),
             _buildNavItem(3, 'wallet.svg', 'المحفظة'),
-            _buildNavItem(4, 'cart.svg', 'السلة'),
-            _buildNavItem(5, 'chat.svg', 'المحادثات'),
-            _buildNavItem(6, 'profile.svg', 'حسابي'),
+            
+            // الزر الذهبي المركزي (رفع الإعلانات)
+            _buildCenterButton(),
+            
+            // الأزرار اليمنى (3)
+            _buildNavItem(4, 'location.svg', 'الخريطة'),
+            _buildNavItem(5, 'search.svg', 'المتجر'),
+            _buildNavItem(2, 'home.svg', 'الرئيسية'),
           ],
         ),
       ),
@@ -125,11 +125,6 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
                     isSelected ? AppTheme.goldColor : (isDark ? Colors.grey[400]! : Colors.grey[600]!),
                     BlendMode.srcIn,
                   ),
-                ).animate(
-                  onPlay: isSelected ? (controller) => controller.repeat(reverse: true) : null,
-                ).shimmer(
-                  duration: 1500.ms,
-                  color: isSelected ? Colors.white : Colors.transparent,
                 ),
               ),
               const SizedBox(height: 2),
@@ -151,13 +146,15 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
   }
 
   Widget _buildCenterButton() {
-    final isSelected = _currentIndex == 2; // الخريطة في المنتصف
-    
     return GestureDetector(
-      onTap: () => _onItemTapped(2),
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const AddAdScreen()),
+        );
+      },
       child: Container(
-        width: 65,
-        height: 65,
+        width: 70,
+        height: 70,
         margin: const EdgeInsets.only(bottom: 10),
         decoration: BoxDecoration(
           gradient: const LinearGradient(
@@ -170,24 +167,22 @@ class _MainNavigationState extends State<MainNavigation> with TickerProviderStat
             BoxShadow(
               color: AppTheme.goldColor.withOpacity(0.4),
               blurRadius: 15,
-              spreadRadius: isSelected ? 3 : 0,
+              spreadRadius: 2,
             ),
           ],
         ),
-        child: SvgPicture.asset(
-          'assets/icons/svg/location.svg',
-          colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
-          width: 30,
-          height: 30,
-          fit: BoxFit.scaleDown,
-        ).animate(
-          onPlay: (controller) => controller.repeat(reverse: true),
-        ).scale(
-          begin: const Offset(1, 1),
-          end: const Offset(1.1, 1.1),
-          duration: 1500.ms,
-          curve: Curves.easeInOut,
+        child: const Icon(
+          Icons.add,
+          color: Colors.black,
+          size: 35,
         ),
+      ).animate(
+        controller: _pulseController,
+      ).scale(
+        begin: const Offset(1, 1),
+        end: const Offset(1.1, 1.1),
+        duration: 1500.ms,
+        curve: Curves.easeInOut,
       ),
     );
   }

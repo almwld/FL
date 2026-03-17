@@ -1,182 +1,120 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 import '../theme/app_theme.dart';
+import '../providers/theme_manager.dart';
+import '../screens/cart_screen.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? title;
   final List<Widget>? actions;
-  final bool showBackButton;
-  final VoidCallback? onBackPressed;
+  final bool automaticallyImplyLeading;
   final Widget? leading;
-  final bool centerTitle;
-  final double elevation;
-  final Color? backgroundColor;
-  final PreferredSizeWidget? bottom;
+  final double height;
 
   const CustomAppBar({
     super.key,
     this.title,
     this.actions,
-    this.showBackButton = true,
-    this.onBackPressed,
+    this.automaticallyImplyLeading = true,
     this.leading,
-    this.centerTitle = true,
-    this.elevation = 0,
-    this.backgroundColor,
-    this.bottom,
+    this.height = 56.0,
   });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    
+    final themeManager = Provider.of<ThemeManager>(context);
+
     return AppBar(
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-      ),
-      backgroundColor: backgroundColor ?? 
-          (isDark ? AppTheme.darkSurface : AppTheme.lightSurface),
-      elevation: elevation,
-      centerTitle: centerTitle,
-      automaticallyImplyLeading: false,
-      leading: leading ?? (showBackButton && Navigator.canPop(context)
-          ? IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: isDark ? AppTheme.darkText : AppTheme.lightText,
-              ),
-              onPressed: onBackPressed ?? () => Navigator.pop(context),
-            )
-          : null),
+      automaticallyImplyLeading: automaticallyImplyLeading,
+      leading: leading,
       title: title != null
           ? Text(
               title!,
-              style: TextStyle(
+              style: const TextStyle(
+                color: AppTheme.goldColor,
+                fontWeight: FontWeight.bold,
                 fontFamily: 'Changa',
-                fontWeight: FontWeight.w600,
-                fontSize: 20,
-                color: isDark ? AppTheme.darkText : AppTheme.lightText,
               ),
             )
           : Row(
-              mainAxisSize: MainAxisSize.min,
               children: [
                 const Text(
                   'FLEX',
                   style: TextStyle(
-                    fontFamily: 'Changa',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
                     color: AppTheme.goldColor,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 2,
+                    fontFamily: 'Changa',
                   ),
                 ),
                 const SizedBox(width: 4),
-                Text(
+                const Text(
                   'YEMEN',
                   style: TextStyle(
+                    fontSize: 14,
+                    color: AppTheme.goldLight,
                     fontFamily: 'Changa',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 16,
-                    color: isDark ? AppTheme.goldLight : AppTheme.goldDark,
                   ),
                 ),
               ],
             ),
-      actions: actions ?? [
-        IconButton(
-          icon: Icon(
-            Icons.search,
-            color: isDark ? AppTheme.darkText : AppTheme.lightText,
-          ),
-          onPressed: () {
-            // TODO: Navigate to search
-          },
-        ),
-        IconButton(
-          icon: Icon(
-            Icons.notifications_outlined,
-            color: isDark ? AppTheme.darkText : AppTheme.lightText,
-          ),
-          onPressed: () {
-            // TODO: Navigate to notifications
-          },
-        ),
-      ],
-      bottom: bottom,
-    );
-  }
-
-  @override
-  Size get preferredSize => Size.fromHeight(
-        kToolbarHeight + (bottom?.preferredSize.height ?? 0),
-      );
-}
-
-class CustomSliverAppBar extends StatelessWidget {
-  final String? title;
-  final List<Widget>? actions;
-  final bool showBackButton;
-  final VoidCallback? onBackPressed;
-  final Widget? leading;
-  final bool centerTitle;
-  final double expandedHeight;
-  final Widget? flexibleSpace;
-  final bool pinned;
-  final bool floating;
-
-  const CustomSliverAppBar({
-    super.key,
-    this.title,
-    this.actions,
-    this.showBackButton = true,
-    this.onBackPressed,
-    this.leading,
-    this.centerTitle = true,
-    this.expandedHeight = 200,
-    this.flexibleSpace,
-    this.pinned = true,
-    this.floating = false,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
-    return SliverAppBar(
-      systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        statusBarIconBrightness: isDark ? Brightness.light : Brightness.dark,
-      ),
+      actions: actions ??
+          [
+            // أيقونة السلة
+            Stack(
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.shopping_cart_outlined),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (_) => const CartScreen()),
+                    );
+                  },
+                ),
+                // عداد السلة (مؤقت)
+                Positioned(
+                  right: 8,
+                  top: 8,
+                  child: Container(
+                    padding: const EdgeInsets.all(2),
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 16,
+                      minHeight: 16,
+                    ),
+                    child: const Text(
+                      '3',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // أيقونة تغيير الثيم
+            IconButton(
+              icon: Icon(isDark ? Icons.light_mode : Icons.dark_mode),
+              onPressed: () {
+                themeManager.toggleTheme();
+              },
+              color: isDark ? Colors.amber : Colors.grey,
+            ),
+          ],
       backgroundColor: isDark ? AppTheme.darkSurface : AppTheme.lightSurface,
+      foregroundColor: isDark ? AppTheme.darkText : AppTheme.lightText,
       elevation: 0,
-      centerTitle: centerTitle,
-      automaticallyImplyLeading: false,
-      leading: leading ?? (showBackButton && Navigator.canPop(context)
-          ? IconButton(
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: isDark ? AppTheme.darkText : AppTheme.lightText,
-              ),
-              onPressed: onBackPressed ?? () => Navigator.pop(context),
-            )
-          : null),
-      title: title != null
-          ? Text(
-              title!,
-              style: TextStyle(
-                fontFamily: 'Changa',
-                fontWeight: FontWeight.w600,
-                fontSize: 20,
-                color: isDark ? AppTheme.darkText : AppTheme.lightText,
-              ),
-            )
-          : null,
-      actions: actions,
-      expandedHeight: expandedHeight,
-      flexibleSpace: flexibleSpace,
-      pinned: pinned,
-      floating: floating,
+      centerTitle: true,
     );
   }
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
 }
