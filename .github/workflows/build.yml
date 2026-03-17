@@ -17,7 +17,13 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          cache: true
+          cache: false  # تعطيل الكاش لضمان بناء جديد
+  
+      - name: Clean project
+        run: |
+          rm -rf build
+          rm -rf .dart_tool
+          flutter clean
       
       - name: Create fresh Android project
         run: |
@@ -30,19 +36,11 @@ jobs:
           cp -r /tmp/fresh_project/ios .
           rm -rf /tmp/fresh_project
       
-      - name: Apply custom app name
-        run: |
-          # تطبيق اسم التطبيق المخصص
-          echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>" > android/app/src/main/res/values/strings.xml
-          echo "<resources>" >> android/app/src/main/res/values/strings.xml
-          echo "    <string name=\"app_name\">Flex Yemen Market</string>" >> android/app/src/main/res/values/strings.xml
-          echo "</resources>" >> android/app/src/main/res/values/strings.xml
-          
-          # تحديث AndroidManifest.xml
-          sed -i 's/android:label="flex_temp"/android:label="Flex Yemen Market"/g' android/app/src/main/AndroidManifest.xml
-      
       - name: Get dependencies
         run: flutter pub get
+      
+      - name: Generate app icons
+        run: flutter pub run flutter_launcher_icons
       
       - name: Build APK
         run: flutter build apk --release --split-per-abi
