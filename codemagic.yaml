@@ -17,6 +17,22 @@ workflows:
           include: true
           source: true
     scripts:
+      - name: Create fresh Android project to fix Gradle
+        script: |
+          # إنشاء مشروع Flutter جديد مؤقت للحصول على ملفات Android نظيفة
+          mkdir -p /tmp/fresh_project
+          cd /tmp/fresh_project
+          flutter create --org com.flexyemen --project-name flex_temp .
+          
+          # العودة إلى المشروع الأصلي ونسخ ملفات android الجديدة
+          cd $CM_BUILD_DIR
+          rm -rf android ios
+          cp -r /tmp/fresh_project/android .
+          cp -r /tmp/fresh_project/ios .
+          
+          # تنظيف الملفات المؤقتة
+          rm -rf /tmp/fresh_project
+          
       - name: Get Flutter packages
         script: |
           flutter pub get
