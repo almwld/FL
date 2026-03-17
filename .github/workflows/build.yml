@@ -25,9 +25,21 @@ jobs:
           cd /tmp/fresh_project
           flutter create --org com.flexyemen --project-name flex_temp .
           cd $GITHUB_WORKSPACE
-          rm -rf android
+          rm -rf android ios
           cp -r /tmp/fresh_project/android .
+          cp -r /tmp/fresh_project/ios .
           rm -rf /tmp/fresh_project
+      
+      - name: Apply custom app name
+        run: |
+          # تطبيق اسم التطبيق المخصص
+          echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>" > android/app/src/main/res/values/strings.xml
+          echo "<resources>" >> android/app/src/main/res/values/strings.xml
+          echo "    <string name=\"app_name\">Flex Yemen Market</string>" >> android/app/src/main/res/values/strings.xml
+          echo "</resources>" >> android/app/src/main/res/values/strings.xml
+          
+          # تحديث AndroidManifest.xml
+          sed -i 's/android:label="flex_temp"/android:label="Flex Yemen Market"/g' android/app/src/main/AndroidManifest.xml
       
       - name: Get dependencies
         run: flutter pub get
